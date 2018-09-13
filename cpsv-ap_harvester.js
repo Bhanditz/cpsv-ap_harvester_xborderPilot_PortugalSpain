@@ -713,25 +713,7 @@ function initialiseListPS (typeEvent) {
  * #param {string} type - BE or LE, depending of the type of page (business or citizens HTML).
  */
 function initialise (type) {
-	/* Fill the events dropdown */
-		/* Get all the events of PSs from a country. */
-		var events = getEvents ("Not");
-		
-		var i=0, uri="", name="", row="", auxevents="";
-		
-		auxevents = events.split("\n");
-		
-		var events = document.getElementById("eventsContainer");
-		events.innerHTML = "";
-		events.innerHTML = "<option id='" + type + "' name='checkEv' value='Option" + 0 + "'>All</option>";
-		for (i=0; i<auxevents.length-1; i++){
-			row = auxevents[i].split("@#");
-			if (row[0] == type)
-				events.innerHTML = events.innerHTML + "<option id='" + row[1] + "' name='checkEv' value='Option" + parseInt(i+1) + "'>" + row[2] + "</option>";
-		}
-	
-	/* Initialisation of the list of sectors to filter. */
-	initialiseSector(type);
+
 
 	/* Initialisation of the list of public services. */
 	initialiseListPS(type);
@@ -1042,8 +1024,6 @@ function getPSInfo (uri, origin) {
 			modal.style.display = "none";
 		}
 	}
-
-	console.log("here");
 	
 	//show the Public Service properties
 	props = getURIProps(uri);
